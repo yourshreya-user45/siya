@@ -12,7 +12,7 @@ TOKEN = os.environ.get("TOKEN")
 UPI_ID = "Q850464187@ybl"
 ADMIN_ID = 7455385301  # 👈 Apna Telegram ID daalo
 
-GROUP_LINK = "https://t.me/+9H9e4toM3kE3YmE9"
+GROUP_LINK = "https://t.me/+9H9e4toM3kE3YmE9", "https://t.me/+_qYF64hI-RcwNWU1"
 
 PLAN = {
     "name": "📸 Photo Editing Pack",
@@ -175,8 +175,8 @@ async def admin_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 text=(
                     "✅ *Payment Verified!*\n"
                     "━━━━━━━━━━━━━━━━━━━━\n\n"
-                    "🎉 Your group access ready hai!\n\n"
-                    f"👇 *Join karo:*\n{GROUP_LINK}\n\n"
+                    "🎉 Your group access is ready!\n\n"
+                    f"👇 *Join:*\n{GROUP_LINK}\n\n"
                     "⚠️ Link is only for you — don't share it.\n"
                     "Thank you! 🙏"
                 ),
