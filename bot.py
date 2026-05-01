@@ -12,11 +12,11 @@ TOKEN = os.environ.get("TOKEN")
 UPI_ID = "Q850464187@ybl"
 ADMIN_ID = 7455385301  # 👈 Apna Telegram ID daalo
 
-GROUP_LINK = "https://t.me/+_qYF64hI-RcwNWU1"
+GROUP_LINK = "https://t.me/+9H9e4toM3kE3YmE9"
 
 PLAN = {
     "name": "📸 Photo Editing Pack",
-    "pictures": " Hot Nude Pictures 🔞",
+    "pictures": "10 Hot Nude Pictures 🔞",
     "price": 500,
     "features": ["Hot Nude Pictures"],
 }
@@ -45,7 +45,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_photo(
         photo=qr,
         caption=(
-            f"🎨 *Siya Private Nude Pictures 🔞🔞*\n"
+            f"🎨 *Shreya Private Nude Pictures 🔞🔞*\n"
             f"━━━━━━━━━━━━━━━━━━━━\n\n"
             f"📸 *{PLAN['pictures']}* — ₹{PLAN['price']}\n\n"
             f"*Includes:*\n{features_text}\n\n"
