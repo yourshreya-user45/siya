@@ -16,7 +16,7 @@ GROUP_LINK = "https://t.me/+9H9e4toM3kE3YmE9"
 
 PLAN = {
     "name": "📸 Photo Editing Pack",
-    "pictures": "10 Hot Nude Pictures 🔞",
+    "pictures": " Hot Nude Pictures 🔞",
     "price": 500,
     "features": ["Hot Nude Pictures"],
 }
