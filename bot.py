@@ -12,7 +12,7 @@ TOKEN = os.environ.get("TOKEN")
 UPI_ID = "Q850464187@ybl"
 ADMIN_ID = 7455385301  # 👈 Apna Telegram ID daalo
 
-GROUP_LINK = "https://t.me/+9H9e4toM3kE3YmE9"
+GROUP_LINK = "https://t.me/+_qYF64hI-RcwNWU1"
 
 PLAN = {
     "name": "📸 Photo Editing Pack",
