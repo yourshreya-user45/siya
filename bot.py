@@ -16,8 +16,8 @@ GROUP_LINK = "https://t.me/+9H9e4toM3kE3YmE9"
 
 PLAN = {
     "name": "📸 Photo Editing Pack",
-    "pictures": "10 Hot Nude Pictures 🔞",
-    "price": 500,
+    "pictures": " Hot Nude Pictures 🔞",
+    "price": 200,
     "features": ["Hot Nude Pictures"],
 }
 
@@ -45,7 +45,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_photo(
         photo=qr,
         caption=(
-            f"🎨 *Shreya Private Nude Pictures 🔞🔞*\n"
+            f"🎨 *Siya Private Nude Pictures 🔞🔞*\n"
             f"━━━━━━━━━━━━━━━━━━━━\n\n"
             f"📸 *{PLAN['pictures']}* — ₹{PLAN['price']}\n\n"
             f"*Includes:*\n{features_text}\n\n"
@@ -175,6 +175,7 @@ async def admin_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 text=(
                     "✅ *Payment Verified!*\n"
                     "━━━━━━━━━━━━━━━━━━━━\n\n"
+                    
                     "🎉 Your group access ready hai!\n\n"
                     f"👇 *Join karo:*\n{GROUP_LINK}\n\n"
                     "⚠️ Link is only for you — don't share it.\n"
