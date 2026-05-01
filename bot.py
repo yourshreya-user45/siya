@@ -139,7 +139,7 @@ async def receive_screenshot(update: Update, context: ContextTypes.DEFAULT_TYPE)
         )
     except Exception:
         context.user_data["submitted"] = False
-        await msg.reply_text("⚠️ Technical issue. Again send or contact @YourUsername.")
+        await msg.reply_text("⚠️ Technical issue. Again send or contact @@shreya_rao22.")
         return WAITING_SCREENSHOT
 
     await msg.reply_text(
