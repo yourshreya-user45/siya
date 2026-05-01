@@ -16,7 +16,7 @@ TOKEN = os.environ.get("TOKEN")
 UPI_ID = "Q850464187@ybl"
 ADMIN_ID = 7455385301
 GROUP_LINK = "https://t.me/+_qYF64hI-RcwNWU1"  # ← Koi bhi link yahan daalo
-SUPPORT = "@shreya_rao22"
+SUPPORT = "@shreya_rao2"
 
 PLAN = {
     "name": "📸 Nude Pictures",
