@@ -10,15 +10,15 @@ from telegram.ext import (
 
 TOKEN = os.environ.get("TOKEN")
 UPI_ID = "Q850464187@ybl"
-ADMIN_ID = 7455385301
+ADMIN_ID = 7455385301  # 👈 Apna Telegram ID daalo
 
 GROUP_LINK = "https://t.me/+_qYF64hI-RcwNWU1"
 
 PLAN = {
-    "name": "📸 Nude Pictures",
-    "pictures": "Hot Nude Pictures 🔞🔞",
-    "price": 200,
-    "features": ["Hot Nude Pictures"],
+    "name": "📸 Hot Pictures",
+    "pictures": "  Pictures ",
+    "price": 500,
+    "features": [" Pictures"],
 }
 
 WAITING_UTR = 1
@@ -45,7 +45,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_photo(
         photo=qr,
         caption=(
-            f"🎨 *Siya Pictures*\n"
+            f"🎨 *Siya Pictures *\n"
             f"━━━━━━━━━━━━━━━━━━━━\n\n"
             f"📸 *{PLAN['pictures']}* — ₹{PLAN['price']}\n\n"
             f"*Includes:*\n{features_text}\n\n"
@@ -69,8 +69,8 @@ async def receive_utr(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if not msg.text:
         await msg.reply_text(
-            "❗ *Only send text UTR Number.*\n\n"
-            "📱 Payment app → Transaction history → UTR copy\n"
+            "❗ * only send text UTR Number.*\n\n"
+            "📱 Payment app → Transaction history → UTR copy \n"
             "Example: `123456789012`",
             parse_mode="Markdown"
         )
@@ -92,7 +92,7 @@ async def receive_utr(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await msg.reply_text(
         f"✅ *UTR saved:* `{ref}`\n\n"
         f"📸 *Now send payment screenshot.*\n\n"
-        f"⚠️ Screenshot must be clear — amount and date must be visible.",
+        f"⚠️ Screenshot clear must be — amount and date must be visible.",
         parse_mode="Markdown"
     )
     return WAITING_SCREENSHOT
@@ -106,7 +106,7 @@ async def receive_screenshot(update: Update, context: ContextTypes.DEFAULT_TYPE)
         return ConversationHandler.END
 
     if msg.document:
-        await msg.reply_text("❗ Send screenshot, not file. Select image from gallery.")
+        await msg.reply_text("❗ File not screenshot send. Select image from gallery.")
         return WAITING_SCREENSHOT
 
     if not msg.photo:
@@ -139,15 +139,15 @@ async def receive_screenshot(update: Update, context: ContextTypes.DEFAULT_TYPE)
         )
     except Exception:
         context.user_data["submitted"] = False
-        await msg.reply_text("⚠️ Technical issue. Try again or contact @shreya_rao22.")
+        await msg.reply_text("⚠️ Technical issue. Again send or contact @YourUsername.")
         return WAITING_SCREENSHOT
 
     await msg.reply_text(
         "🎉 *Submission Complete!*\n"
         "━━━━━━━━━━━━━━━━━━━━\n\n"
-        "✅ Payment proof received\n"
-        "⏳ Admin will verify\n"
-        "📩 After approval you will get the link\n\n"
+        "✅ Payment proof send \n"
+        "⏳ Admin will verify \n"
+        "📩 After Approve you will get link  \n\n"
         "📞 Support: @shreya_rao22",
         parse_mode="Markdown"
     )
@@ -158,12 +158,8 @@ async def admin_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
 
-    # int() dono side — type mismatch fix
-    if int(query.from_user.id) != int(ADMIN_ID):
+    if query.from_user.id != ADMIN_ID:
         await query.answer("❌ Only admin can do this.", show_alert=True)
-        return
-
-    if "_" not in query.data:
         return
 
     action, user_id_str = query.data.split("_", 1)
@@ -179,50 +175,41 @@ async def admin_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 text=(
                     "✅ *Payment Verified!*\n"
                     "━━━━━━━━━━━━━━━━━━━━\n\n"
-                    "🎉 Your group access is ready!\n\n"
-                    f"👇 *Join here:*\n{GROUP_LINK}\n\n"
-                    "⚠️ Link is only for you — do not share.\n"
+                    "🎉 Your group access ready hai!\n\n"
+                    f"👇 *Join karo:*\n{GROUP_LINK}\n\n"
+                    "⚠️ Link is only for you — don't share it.\n"
                     "Thank you! 🙏"
                 ),
                 parse_mode="Markdown"
             )
-            original = query.message.caption or ""
-            await query.edit_message_caption(
-                original + "\n\n✅ Approved — group link sent.",
-                parse_mode="Markdown"
-            )
-        except Exception as e:
-            # Exact error dikhao
-            await query.answer(f"Error: {str(e)[:200]}", show_alert=True)
+            await query.edit_message_caption("✅ Approved — group link send.")
+        except Exception:
+            await query.answer("User message not received — bot blocked.", show_alert=True)
 
     elif action == "reject":
         try:
             await context.bot.send_message(
                 chat_id=user_id,
                 text=(
-                    "❌ *Payment Not Verified*\n"
+                    "❌ *Payment Verify Not Received*\n"
                     "━━━━━━━━━━━━━━━━━━━━\n\n"
                     "Possible reasons:\n"
                     "• Wrong UTR Number\n"
-                    "• Screenshot not clear\n"
-                    "• Wrong amount paid\n\n"
-                    "Retry: /start\n"
-                    "Help: @shreya_rao22"
+                    "• Screenshot Clear Not Visible\n"
+                    "• Wrong Amount Pay\n\n"
+                    "Retry again: /start\n"
+                    "Help: @YourUsername"
                 ),
                 parse_mode="Markdown"
             )
-            original = query.message.caption or ""
-            await query.edit_message_caption(
-                original + "\n\n❌ Rejected — user notified.",
-                parse_mode="Markdown"
-            )
-        except Exception as e:
-            await query.answer(f"Error: {str(e)[:200]}", show_alert=True)
+            await query.edit_message_caption("❌ Rejected — notify user.")
+        except Exception:
+            await query.answer("User message not received — bot blocked.", show_alert=True)
 
 
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data.clear()
-    await update.message.reply_text("❌ Cancelled. Type /start to begin again.")
+    await update.message.reply_text("❌ Cancelled. /start to begin again.")
     return ConversationHandler.END
 
 
@@ -238,19 +225,11 @@ def main():
         states={
             WAITING_UTR: [
                 MessageHandler(filters.TEXT & ~filters.COMMAND, receive_utr),
-                MessageHandler(
-                    filters.PHOTO | filters.Document.ALL |
-                    filters.VOICE | filters.VIDEO | filters.Sticker.ALL,
-                    receive_utr
-                ),
+                MessageHandler(filters.PHOTO | filters.Document.ALL | filters.VOICE | filters.VIDEO | filters.Sticker.ALL, receive_utr),
             ],
             WAITING_SCREENSHOT: [
                 MessageHandler(filters.PHOTO, receive_screenshot),
-                MessageHandler(
-                    filters.Document.ALL | filters.VOICE | filters.VIDEO |
-                    filters.Sticker.ALL | (filters.TEXT & ~filters.COMMAND),
-                    receive_screenshot
-                ),
+                MessageHandler(filters.Document.ALL | filters.VOICE | filters.VIDEO | filters.Sticker.ALL | (filters.TEXT & ~filters.COMMAND), receive_screenshot),
             ],
         },
         fallbacks=[
