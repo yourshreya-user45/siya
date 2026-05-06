@@ -10,7 +10,7 @@ from telegram.ext import (
 
 TOKEN = os.environ.get("TOKEN")
 UPI_ID = "Q850464187@ybl"
-ADMIN_ID = 123456789  # 👈 Apna Telegram ID daalo
+ADMIN_ID = 7455385301  # 👈 Apna Telegram ID daalo
 SUPPORT = "@YourUsername"
 
 WAITING_UTR = 1
