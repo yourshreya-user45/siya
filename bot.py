@@ -11,33 +11,33 @@ from telegram.ext import (
 TOKEN = os.environ.get("TOKEN")
 UPI_ID = "Q850464187@ybl"
 ADMIN_ID = 7455385301 # 👈 Apna Telegram ID daalo
-SUPPORT = "@YourUsername"
+SUPPORT = "@shreya_rao22"
 
 WAITING_UTR = 1
 WAITING_SCREENSHOT = 2
 
 PLANS = {
     "basic": {
-        "emoji": "🥉",
+        "emoji": "❤️‍🔥",
         "name": "Basic Pack",
         "price": 299,
-        "pictures": "3 Pictures",
+        "pictures": "3 Hot Pictures 💦",
         "talk": "10 Min Talk",
-        "group": "https://t.me/+BasicDummyLink123",  # 👈 Basic plan ka link
+        "group": "https://t.me/+8Qr_3YGALQ81MTU1",  # 👈 Basic plan ka link
     },
     "pro": {
-        "emoji": "🥈",
+        "emoji": "🥵",
         "name": "Pro Pack",
         "price": 599,
-        "pictures": "5 Pictures",
+        "pictures": "5 Hot Pictures",
         "talk": "30 Min Talk",
-        "group": "https://t.me/+ProDummyLink456",    # 👈 Pro plan ka link
+        "group": "https://t.me/+Aug56KiJA9EwZTdl",    # 👈 Pro plan ka link
     },
     "vip": {
-        "emoji": "🥇",
+        "emoji": "🥵💦",
         "name": "VIP Pack",
         "price": 1499,
-        "pictures": "10 Pictures",
+        "pictures": "10 Hot Pictures",
         "talk": "1 Hour Talk",
         "group": "https://t.me/+VipDummyLink789",    # 👈 VIP plan ka link
     },
