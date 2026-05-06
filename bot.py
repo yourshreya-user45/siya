@@ -10,7 +10,7 @@ from telegram.ext import (
 
 TOKEN = os.environ.get("TOKEN")
 UPI_ID = "Q850464187@ybl"
-ADMIN_ID = 7455385301  # 👈 Apna Telegram ID daalo
+ADMIN_ID = 7455385301 # 👈 Apna Telegram ID daalo
 SUPPORT = "@YourUsername"
 
 WAITING_UTR = 1
@@ -23,6 +23,7 @@ PLANS = {
         "price": 299,
         "pictures": "3 Pictures",
         "talk": "10 Min Talk",
+        "group": "https://t.me/+BasicDummyLink123",  # 👈 Basic plan ka link
     },
     "pro": {
         "emoji": "🥈",
@@ -30,6 +31,7 @@ PLANS = {
         "price": 599,
         "pictures": "5 Pictures",
         "talk": "30 Min Talk",
+        "group": "https://t.me/+ProDummyLink456",    # 👈 Pro plan ka link
     },
     "vip": {
         "emoji": "🥇",
@@ -37,6 +39,7 @@ PLANS = {
         "price": 1499,
         "pictures": "10 Pictures",
         "talk": "1 Hour Talk",
+        "group": "https://t.me/+VipDummyLink789",    # 👈 VIP plan ka link
     },
 }
 
@@ -215,16 +218,32 @@ async def admin_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if action == "approve":
         try:
+            # User ka plan dhundo — caption se user_id match karke
+            # Plan info admin ke caption mein stored hai
+            # Hum user_data se plan nahi le sakte (alag context hai)
+            # Isliye sabse safe: approve karte waqt caption mein plan store tha
+            # Workaround: caption parse karke plan key nikalo
+            caption = query.message.caption or ""
+            plan_key = "basic"  # default
+            for key in ["basic", "pro", "vip"]:
+                plan_name = PLANS[key]["name"]
+                if plan_name in caption:
+                    plan_key = key
+                    break
+            
+            group_link = PLANS[plan_key]["group"]
+            
             await context.bot.send_message(
                 chat_id=user_id,
                 text=(
-                    "Payment Verified!\n\n"
-                    "Your order is confirmed.\n"
-                    "You will receive your content within 24 hours.\n\n"
-                    "Thank you!"
+                    f"Payment Verified!\n\n"
+                    f"Your order is confirmed.\n\n"
+                    f"Join your group here:\n{group_link}\n\n"
+                    f"Link is only for you - do not share.\n"
+                    f"Thank you!"
                 )
             )
-            await query.edit_message_caption("Approved - user notified.")
+            await query.edit_message_caption("Approved - group link sent to user.")
         except Exception as e:
             await query.answer(f"Error: {str(e)[:150]}", show_alert=True)
 
